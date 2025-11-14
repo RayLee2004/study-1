@@ -460,4 +460,148 @@ cal_structure_metrics <- function(x, y) {
 chain_metrics <- cal_chain_metrics(graphs)
 network_indices <- cal_structure_metrics(matrices, graphs)
 network_metrics_collection <- cbind(chain_metrics, network_indices[, -1])
+
 write.xlsx(network_metrics_collection, 'C:/Users/23926/Desktop/works/#1 datasets and codes/codes/module:yellow_network_metrics.xlsx')
+
+### Part.6 fit linear mixed-effects models (LLM) of metrics in study and environmental factors
+
+# Read datasets 
+rm(list = ls())
+env_data <- read.xlsx('C:/Users/23926/Desktop/works/#1 datasets and codes/datasets/environmental quality.xlsx')
+metrics_data <- read.xlsx('C:/Users/23926/Desktop/works/#1 datasets and codes/datasets/indices_original.xlsx')
+data <- cbind(env_data,metrics_data[,-1])
+# Standardize numeric vectors
+data[, 3:ncol(data)] <- scale(data[, 3:ncol(data)])
+
+
+## Environment - Algae_richness
+model <- lmer(algae_richness~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Algae_diversity
+model <- lmer(algae_diversity~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Bacteria_richness
+model <- lmer(bacteria_richness~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Bacteria_diversity
+model <- lmer(bacteria_diversity~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Fungi_richness
+model <- lmer(fungi_richness~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Fungi_diversity
+model <- lmer(fungi_diversity~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Zooplankton_richness
+model <- lmer(zooplankton_richness~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Zooplankton_diversity
+model <- lmer(zooplankton_diversity~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Insect_richness
+model <- lmer(insect_richness~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Insect_diversity
+model <- lmer(insect_diversity~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Benthic invertebrate_richness
+model <- lmer(invertebrate_richness~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Benthic invertebrate_diversity
+model <- lmer(invertebrate_diversity~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Fish_richness
+model <- lmer(fish_richness~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Fish_diversity
+model <- lmer(fish_diversity~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Multi_richness
+model <- lmer(multi_richness~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Multi_diversity
+model <- lmer(multi_diversity~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Mean Path
+model <- lmer(mean_path_length~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Connectance
+model <- lmer(connectance~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Modularity
+model <- lmer(modularity~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Nestedness
+model <- lmer(nestedness~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Robustness
+model <- lmer(robustness~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
+
+## Environment - Vulnerability
+model <- lmer(vulnerability~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),data)
+summary(model)
+car::vif(model) # Collinearity of the independent variables
+performance::r2(model)# R2 statistic value
