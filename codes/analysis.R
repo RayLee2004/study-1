@@ -5,7 +5,10 @@
 # Load packages
 packages <- c(
   'openxlsx', 'tidyr', 'vegan', 'dplyr', 'codyn', 'tibble', 
-  'igraph', 'bipartite', 'purrr', 'Hmisc', 'piecewiseSEM'
+  'igraph', 'bipartite', 'purrr', 'Hmisc', 'piecewiseSEM',
+  'tidyverse','rstatix','car','lme4','lmerTest','multilevelTools',
+  'extraoperators','JWileymisc','effectsize','influence.ME','GGally',
+  'MuMIn','sjstats'
 )
 lapply(packages, library, character.only = TRUE)
 
@@ -605,3 +608,4 @@ model <- lmer(vulnerability~Temperature+pH+DO+COD+NH3N+TP+TN+EC+TUB+(1|year),dat
 summary(model)
 car::vif(model) # Collinearity of the independent variables
 performance::r2(model)# R2 statistic value
+
